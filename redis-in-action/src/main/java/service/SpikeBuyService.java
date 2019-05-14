@@ -13,7 +13,7 @@ public class SpikeBuyService {
             "end \n" +
             "local skuNum = tonumber(redis.call('get', 'sku:'..ARGV[2])) or 0 \n" +
             "local num = math.min(ARGV[3], 5) or 0 \n" +
-            "if num > skuNum then \n" +
+            "if skuNum == 0 or num > skuNum then \n" +
             "   return 0 \n" +
             "end \n" +
             "redis.call('decrby', 'sku:'..ARGV[2], num) \n" +
