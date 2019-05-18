@@ -20,8 +20,9 @@ public class JedisUtil {
         String testOnBorrow = properties.getProperty("redis.testOnBorrow");
         JedisPoolConfig config = new JedisPoolConfig();
         config.setMaxIdle(NumberUtils.toInt(maxIdle));
-        config.setMaxWait(NumberUtils.toLong(maxWaitMills));
+        config.setMaxWaitMillis(NumberUtils.toLong(maxWaitMills));
         config.setTestOnBorrow(BooleanUtils.toBoolean(testOnBorrow));
+        config.setMaxTotal(2000);
         jedisPool = new JedisPool(config, host);
     }
 
